@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Center(
-            child: Text("Nothing"),
+            child: Text("Isi HomePage"),
           ),
         ],
       ),
