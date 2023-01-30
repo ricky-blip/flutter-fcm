@@ -4,12 +4,20 @@ import 'firebase_options.dart';
 import 'presentation/app_widget.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+//function untuk background notification
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('melisten Background Notification');
+  print(message.notification);
+  print(message.notification!.title);
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp();
   await permissionRequest();
+  //untuk background notification dengan memanggil function
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   runApp(const MyApp());
 }
 
